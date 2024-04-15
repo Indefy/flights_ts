@@ -14,7 +14,28 @@ export default class Flight {
 		this.landed = data.landed;
 		this.departed = data.departed;
 	}
-
+	get flightNumber(): number {
+		return this.number;
+	}
+	get flightOrigin(): string {
+		return this.origin;
+	}
+	get flightDestination(): string {
+		return this.destination;
+	}
+	get flightLanded(): string {
+		return this.landed;
+	}
+	get flightDeparted(): string {
+		return this.departed;
+	}
+	set flightNumber(number: number) {
+		if (this.number > 0) {
+			this.number = number;
+		} else {
+			throw new Error("Flight number must be greater than 0");
+		}
+	}
 	public depart(): void {
 		this.departed = dayjs().format("YYYY-MM-DD HH:mm:ss");
 	}
